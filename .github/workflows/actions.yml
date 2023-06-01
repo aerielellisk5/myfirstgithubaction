@@ -11,5 +11,8 @@ jobs:
         # try to reference a version or a specific..... commitID
         with:
           who-to-greet: Aeriel
+      
+      - name: Log Greeting Time
+        run: echo "${{steps.greet.outputs.time}}""
 
    
