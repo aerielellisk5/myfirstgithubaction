@@ -1,0 +1,21 @@
+name: Shell Commands
+# this will be the name of the entire workflow
+
+on: [push]
+# specifying events ie: [push, pull request, issue created, etc
+
+jobs:
+  run-shell-command:
+  # you can only use dashes or underscores for the job title
+    
+    runs on: ubuntu-latest
+    # this is provided by github
+
+    steps:
+      - name: echo a string
+        run: echo  "Hello World"
+      - name: multiline script
+        run: |
+        #  the "|"" allows us to write multi-lined commands
+          node -v 
+          npm -v
