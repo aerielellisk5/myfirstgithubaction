@@ -12,10 +12,11 @@ jobs:
     # this is provided by github
 
     steps:
-      - name: echo a string
-        run: echo "Hello World"
-      - name: multiline script
-        run: |
+    - name: echo a string
+      run: echo "Hello World"
+
+    - name: multiline script
+      run: |
         #  the "|"" allows us to write multi-lined commands
           node -v 
           npm -v
