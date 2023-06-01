@@ -20,3 +20,10 @@ jobs:
         #  the "|"" allows us to write multi-lined commands
           node -v 
           npm -v
+
+# using a pythons shell rather than bash
+    - name: python command
+      run: |
+        import platform
+        print(platform.processor())
+      shell: python
