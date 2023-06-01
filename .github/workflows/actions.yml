@@ -13,6 +13,6 @@ jobs:
           who-to-greet: Aeriel
       
       - name: Log Greeting Time
-        run: echo "${{steps.greet.outputs.time}}"
+        run: echo "${{steps.Simple_JS_Action.outputs.time}}"
 
    
