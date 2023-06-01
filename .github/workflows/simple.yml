@@ -29,10 +29,10 @@ jobs:
       shell: python
 
     runs-on: windows:latest
-      steps:
-      - name: Directory Powershell
-        run: Get-Location
+    steps:
+    - name: Directory Powershell
+      run: Get-Location
 
-      - name: Directory Bash
-        run: pwd
-        shell: bash
+    - name: Directory Bash
+      run: pwd
+    shell: bash
