@@ -28,10 +28,10 @@ jobs:
         print(platform.processor())
       shell: python
 
-  runs-on: windows:latest
-  steps: 
-    - name: Directory Powershell
-      run: Get-Location
-    - name: Directory Bash
-      run: pwd
-      shell: bash
+    runs-on: windows:latest
+    steps: 
+      - name: Directory Powershell
+        run: Get-Location
+      - name: Directory Bash
+        run: pwd
+        shell: bash
