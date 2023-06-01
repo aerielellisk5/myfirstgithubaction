@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Simple JS Action 
-        uses: actions/hello-world-javascript-actions@v1
+        uses: actions/hello-world-javascript-action@v1
         # try to reference a version or a specific..... commitID
         with:
           who-to-greet: Aeriel
