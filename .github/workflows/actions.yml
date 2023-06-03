@@ -1,11 +1,44 @@
 name: Actions Workflow
 
 on:
-  schedule:
-    - cron: "0/1 * * * *"
-    - cron: "0/6 * * * *"
 
-  # push:
+  # schedule:
+  #   - cron: "* * * * *"
+    
+      # "minutes, hours, day of the month, month, day of the week"
+      # * = any///every. so this will run at every minute
+      # ex: "1 * * * *", will run at the first minute at the beginning of the hour
+      #  ex "0/15 * * * *", will run every 15 minutes--> 20/15 will start this at minute 20, and run every 15minutes
+
+      # ex "0 12 * * *" will run at 12 every day
+      # ex " 0 12 1 * *" will run at 12 on day the first day of the month
+      # ex " 0 12 1 1" will run at at day on the first day of the month in january 
+      # OR "0 12 * FEB 0" at 12 on sunday in february OR "0 12 * "
+
+  push:
+    branches:
+      - main
+
+      - '!feature/featC'
+      # the above branch will be ignored
+      - 'features/**'
+      - 'feature/*' # matches feature/featA, feature/featB
+      #  - feature/** would match any string, including forward slashes
+      #  https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+      # branches-ignore:
+        # you can't use branches and branches ignore
+    tags:
+      - v1.*
+    # tags-ignore--> also cant'be used with tags, you can have on or the other
+
+    paths:
+      - '**.js'
+      - '!finename.js' # would be ignored
+    # paths-ignore:
+    #   - 'docs/**'
+
+  repository_dispatch:
+
   pull_request:
     types: [closed, assigned, opened, reopened]
 
