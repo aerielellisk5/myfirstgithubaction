@@ -3,12 +3,21 @@ on: push
 
 jobs:
   node-version:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node_version: [6,8,10]
+        # this will cause the action to run 3x
+
+      # fail-fast: true
+      # max-parallel: 0
+      # typically jobs run in parallel so max-parallel will say how many jobs can be running at one time
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Log node version  
         run: node -v 
       - uses: actions/setup-node@v1
         with:
-          node-version: 6
+          node-version: ${{ matrix.node_version }}
       - name: Log node version
         run: node -v
