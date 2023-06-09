@@ -1,5 +1,5 @@
 name: Context testing
-on: push
+on: [push, pull_request]
 
 jobs:
   functuions:
@@ -7,22 +7,25 @@ jobs:
     steps:
       - name: dump
         run: |
-        echo ${{ contains( 'hello', 'll' ) }}
-        echo ${{ startsWith( 'hello', 'he' ) }}
-        echo ${{ endsWith( 'hello', 'lo' ) }}
-        echo ${{ format( 'Hello {0} {1} {2}', 'World', '!', '!' ) }}
+        # echo ${{ startsWith( 'hello', 'he' ) }}
+        # echo ${{ endsWith( 'hello', 'lo' ) }}
+        # echo ${{ format( 'Hello {0} {1} {2}', 'World', '!', '!' ) }}
   dump_contexts_to_log:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     steps:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo '$GITHUB_CONTEXT'
+        run: eccho '$GITHUB_CONTEXT'
       - name: Dump job context
+        if: failure()
         env:
           JOB_CONTEXT: ${{ toJson(job) }}
         run: echo '$JOB_CONTEXT'
       - name: Dump steps context
+        if: always() 
+        # this step will always run
         env:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo '$STEPS_CONTEXT'
