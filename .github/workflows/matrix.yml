@@ -12,7 +12,21 @@ jobs:
       # max-parallel: 0
       # typically jobs run in parallel so max-parallel will say how many jobs can be running at one time
         os: [macos-latest, ubuntu-latest, windows-latest]
+        include:
+        # includes extra variables that already exists in the matrix
+          - os: ubuntu-latest
+            node_version: 8
+            is_ubuntu_8: "true"
+
+
+        exclude: 
+          - os: ubuntu-latest
+            node_version: 6
+          - os: macos-latest
+            node_version: 8
     runs-on: ${{ matrix.os }}
+    env:
+      IS_UBUNTU_8: ${{matrix.is_ubuntu_8 }}
     steps:
       - name: Log node version  
         run: node -v 
@@ -20,4 +34,6 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       - name: Log node version
-        run: node -v
+        run: |
+          node -v
+          echo "$IS_UBUNTU_8"
