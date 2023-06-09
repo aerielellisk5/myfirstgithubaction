@@ -14,8 +14,12 @@ jobs:
     steps:
     - name: echo a string
       run: echo "Hello World"
+      timeout-minutes: 360 
+      # github will cancel after 6 hours
+      # continue-on-error: true
 
     - name: multiline script
+      if: failure()
       run: |
         #  the "|"" allows us to write multi-lined commands
           node -v 
