@@ -1,5 +1,5 @@
 name: Context testing
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   functuions:
@@ -43,4 +43,3 @@ jobs:
         run: echo '$MATRIX_CONTEXT'
         # adding something random here
         # a little more
-        

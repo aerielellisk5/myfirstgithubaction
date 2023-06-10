@@ -15,7 +15,7 @@ on:
       # ex " 0 12 1 1" will run at at day on the first day of the month in january 
       # OR "0 12 * FEB 0" at 12 on sunday in february OR "0 12 * "
 
-  push:
+  pull_request:
     branches:
       - main
 
