@@ -41,7 +41,7 @@ jobs:
       - name: Run a Script
         uses: docker://node:18.16.0-alpine
         with: 
-          entrypoint: script.sh
+          entrypoint: .github/workflows/script.sh
           # './scripts.sh'
           # 'scripts.sh'
           args: "some string here"
