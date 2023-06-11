@@ -45,6 +45,7 @@ jobs:
       #     entrypoint: ./script.sh
       #     args: "some string here"
       - name: List Files After Checkout
+      # needed to run this to see where I was once I checked out my repo
         run: |
           pwd
           ls -la 
@@ -53,6 +54,13 @@ jobs:
         with: 
           entrypoint: ./script.sh
           args: "some string here"
+      - name: Send a slack message
+        uses: docker://technosophos/slack-notify
+        env:
+          # SLACK_WEBHOOK: {{ secrets.SLACK_WEBHOOK }}
+          # this should actually be a secret because people can access it
+          SLACK_MESSAGE: 'Hello I did it!'
+
   # node-docker: 
   #   runs-on: ubuntu-latest
   #   services:
