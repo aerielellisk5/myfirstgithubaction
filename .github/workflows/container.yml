@@ -41,7 +41,7 @@ jobs:
       - name: Run a Script
         uses: docker://node:18.16.0-alpine
         with: 
-          entrypoint: ./scripts.sh
+          entrypoint: './scripts.sh'
           args: "some string here"
   node-docker: 
     runs-on: ubuntu-latest
